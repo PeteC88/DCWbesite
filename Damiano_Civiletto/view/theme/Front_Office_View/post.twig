@@ -1,0 +1,93 @@
+{% extends "front_layout.twig" %}
+{% block head %}
+  <title>Blog</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/ajax_comments.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="ftco-blocks-cover-1">
+      <div class="ftco-cover-1 overlay" style="background-image: url('images/blog.jpg')">
+        <div class="container">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-lg-6 text-center">
+              <span class="d-block mb-3 text-white" data-aos="fade-up">{{ post.creation_date_it }}
+                <h1 class="mb-4" data-aos="fade-up" data-aos-delay="100">{{ post.title }}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7 mr-auto blog-content">
+            <p class="lead">{{ post.content | raw }}</p>
+            <div class="pt-5">
+                {% if countApprovedComments == 1  %}
+                    <h3 class="mb-5">{{ countApprovedComments}} commento </h3>
+                    {% else %}
+                        <h3 class="mb-5">{{ countApprovedComments | default("0")}} commenti </h3>
+                {% endif %}
+              <ul class="comment-list" style="margin-left: -10%">
+               {% for comment in comments %}
+                 {% if comment.authorised_comment == 1 %}
+                <li class="comment">
+                  <div class="comment-body">
+                    <h3 class="">{{ comment.author }}</h3>
+                    <div class="meta" style="color: #0f6674">{{ comment.comment_date_it }}</div>
+                    <p>{{ comment.comment | raw }}</p>
+                  </div>
+                </li>
+                 {% endif %}
+                {% endfor %}
+              </ul>
+
+              <!-- END comment-list -->
+
+              <!-- Send new comment -->
+
+              <div class="comment-form-wrap pt-5">
+                  <div>
+                    <h3 class="mb-5">Lascia un commento</h3>
+                    <form id="submit_form" method="POST" action="addComment-{{ post.id }}"  class="">
+                     <!-- <input id="postId" name="postId" type="hidden" value="{{ post.id }}"> -->
+                      <div class="form-group">
+                        <label for="author">Nome *</label>
+                        <input type="text" name="author" class="form-control" id="author">
+                      </div>
+                      <div class="form-group">
+                        <label for="email">Email * (l'indirizzo e-mail non apparirà nella pagina)</label>
+                        <input type="email" name="email" class="form-control" id="email">
+                      </div>
+                      <div class="form-group">
+                        <label for="comment">Messaggio *</label>
+                        <textarea  id="comment" name="comment" cols="30" rows="10" class="form-control"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <input type="submit" id="submit" name="submit" value="Invia" class="btn btn-primary btn-md text-white">
+                      <span class="reponse"></span>
+                      </div>
+                    </form>
+                  </div>
+              </div>
+
+            </div>
+          </div>
+                  <div class="col-md-4 sidebar">
+                      <div class="sidebar-box">
+                          <img src="images/Damiano_Civiletto_thumbnail.jpeg" alt="Image" class="img-fluid mb-4 w-50 rounded-circle">
+                          <h3 class="text-black">L'Autore</h3>
+                          <p>Damiano Civiletto, classe 1975, laureato all'Università degli Studi di Palermo nel 2005 Da diversi anni si occupa di diversi progetti a livello regionale</p>
+                          <p><a href="about" class="btn btn-primary btn-md text-white">Scopri di più</a></p>
+                      </div>
+                  </div>
+              </div>
+            </div>
+
+            </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

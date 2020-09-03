@@ -1,0 +1,33 @@
+{% extends "front_layout.twig" %}
+{% block head %}
+  <title>Posts</title>
+{% endblock %}
+
+{% block content %}
+<!--ob_start is called buffering or temporisation in french-->
+
+<h1 style="text-align: center; font-size: 3em;">Liste des chapitres</h1>
+{% for data in post %}
+<div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-preview">
+            <a href="index.php?action=post&amp;id=<?= $data['id'] ?>">
+              <h2 class="post-title">
+                {{ data.title[:50] ~ '...' }}
+                </h2>
+              <h3 class="post-subtitle">
+                {{ data.content[:50] ~ '...' }}
+              </h3> 
+            </a>
+            <p class="post-meta"> Pubblicato il  {{ data.creation_date_fr }}
+            <br />
+            </p>
+        <br />
+          </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

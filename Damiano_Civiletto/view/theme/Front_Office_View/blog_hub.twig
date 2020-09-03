@@ -1,0 +1,50 @@
+{% extends "front_layout.twig" %}
+{% block head %}
+<title> Blog </title>
+{% endblock %}
+
+{% block content %}
+      <div class="site-section">
+      <div class="container">
+        <div class="row  mb-5">
+          <div class="col-md-12" style="text-align: center">
+            <h2 class="heading-39291" style="font-size: 3em">Blog</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto quos veniam magni totam, architecto earum dolor id obcaecati!</p>
+            
+          </div>
+        </div>
+        <div class="row align-items-stretch">
+          {% for data in post %}
+          <div class="col-lg-3 col-md-6 mb-5">
+            <div class="post-entry-1 h-100">
+              <div class="post-entry-1-contents">
+                <span class="meta">{{ data.creation_date_it }}</span>
+                <h2>{{ data.title }}</h2>
+                <p class="my-3"><a href="post-{{ data.id }}" class="more-39291">Scopri di più</a></p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+        <nav>
+          <ul class="pagination d-flex flex-wrap">
+            <!-- Link to the previous page, disabled if we're on page 1 -->
+            <li class="page-item {{ (currentPage == 1) ? "disabled" : "" }}">
+            <a href="blog?page={{ currentPage -1}}" class="page-link">Indietro</a>
+            </li>
+            {% set page = 1 %}
+            {% for page in range(1, pages)%}
+            <!-- link for each page, actived if you are in the corresponding page-->
+            <li class="page-item {{ (currentPage == page) ? "active" : "" }} ">
+            <a href="blog?page={{ page }}" class="page-link">{{ page }}</a>
+            </li>
+            {% endfor %}
+            <!-- Link to the next page, disabled if we're at the last page -->
+            <li class="page-item {{ (currentPage == pages) ? "disabled" : "" }}">
+              <a href="blog?page={{ currentPage +1}}" class="page-link">Avanti</a>
+            </li>
+          </ul>
+        </nav>
+        </div>
+      </div>
+{% endblock %}

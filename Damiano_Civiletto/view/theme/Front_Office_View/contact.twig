@@ -1,0 +1,109 @@
+{% extends "front_layout.twig" %}
+
+{% block head %}
+  <title> Contatti</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="js/contactFormValidation.js" ></script>
+  <script src="js/ajax_contacts.js" ></script>
+{% endblock %}
+
+{% block content %}
+    <div class="ftco-blocks-cover-1">
+        <div class="ftco-cover-1" style="background-image: url('images/modello_page_contact.jpg');">
+            <div class="container">
+              <div class="row align-items-center justify-content-center">
+                <div class="col-lg-12 text-center">
+                   <div class="box-92819">
+                    <h1 class="text-uppercase text-black mb-3">Contatti</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+
+    
+    <div class="site-section">
+      <div class="container">
+        
+        <div class="row">
+          <div class="col-lg-8 mb-5" >
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3139.460241406879!2d13.366826314957642!3d38.106225800793915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1319e58ff4ff5ae7%3A0x4757723c1a50411e!2sVia%20Barone%20Bivona%2C%205%2C%2090127%20Palermo%20PA!5e0!3m2!1sit!2sit!4v1597049668465!5m2!1sit!2sit" width="100%" height="115%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+          </div>
+          <div class="col-lg-4 ml-auto">
+            <div class="bg-white p-3 p-md-5">
+              <h3 class="heading-39291">Contatti</h3>
+              <ul class="list-unstyled footer-link">
+                <li class="d-block mb-3">
+                  <span class="d-block text-black small text-uppercase font-weight-bold">Indirizzo:</span>
+                  <span>via Barone Bivona 5, 90127 Palermo</span></li>
+                <li class="d-block mb-3"><span class="d-block text-black small text-uppercase font-weight-bold">Telefono:</span><span>+39 320 46 52 690</span></li>
+                <li class="d-block mb-3"><span class="d-block text-black small text-uppercase font-weight-bold">Email:</span><span>archdamciv@libero.it</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+    <div class="container">
+      <div class="row justify-content-center" >
+        <div class="col-lg-12 mb-5"  >
+          <h3 align="center">Usa il formulario per contattarmi</h3>
+          <form action="sendMail" method="post" id="submit_contact_form">
+            <div id="error_message" style="margin-bottom: 20px; padding: 0px; background: #fe8b8e; text-align: center; font-size: 14px; transition: all 0.5s ease"></div>
+            <div class="form-group row">
+              <div class="col-md-6 mb-4 mb-lg-0">
+                <input type="text" name="name" id="name" class="form-control" placeholder="Nome">
+              </div>
+              <div class="col-md-6">
+                <input type="text" name="surname" id="surname" class="form-control" placeholder="Cognome">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-md-6 mb-4 mb-lg-0">
+                <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+              </div>
+              <div class="col-md-6">
+                <input type="text" name="phone" id="phone" class="form-control" placeholder="Telefono">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-12">
+                <select name="object" id="object"   class="form-control">
+                  <option value="" disabled selected>Motivo del contatto</option>
+                  <option value="commerciale" id="commerciale">Informazioni commerciali</option>
+                  <option value="preventivo" id="preventivo">Richiesta preventivo</option>
+                  <option value="appuntamento" id="appuntamento">Prenotazione appuntamento</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-md-12">
+                <textarea name="content" id="content" class="form-control" placeholder="Messaggio." cols="30" rows="10"></textarea>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-6 mr-auto" style="margin-left: auto; margin-right: auto">
+                <input type="submit" id="submit" name="submit" class="btn btn-block btn-primary text-white py-3 px-5 rounded-0" value="Invia">
+                <span class="reponse"></span>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+      </div>
+    </div>
+  {% if error is defined %}
+
+    <div style="color: red; background-color: #F6CECE; width: 300px; border-radius: 10px; margin-left: auto; margin-right: auto">  {{error}} </div>
+
+  {% endif %}
+  {% if success is defined %}
+
+    <div style="color: green; background-color: #F6CECE; width: 300px; border-radius: 10px">  {{success}} </div>
+
+  {% endif %}
+{% endblock %}

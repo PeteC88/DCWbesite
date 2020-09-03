@@ -1,0 +1,125 @@
+{% extends "front_layout.twig" %}
+{% block head %}
+  <title>Home</title>
+{% endblock %}
+{% block content %}
+  <!--SECTION HOME CAROUSEL -->
+  <div class="owl-carousel-wrapper">
+    <div class="box-92819" style="width: 100%" >
+      <div class="owl-carousel slide-one-item-alt-text">
+        <div>
+          <h1 class="text-uppercase mb-3" style="text-align: center">Damiano Civiletto</h1>
+          <p class="mb-5" style="text-align: center">Architetto e interior designer</p>
+          <p class="mb-0" style="text-align: center"><a href="contact" class="btn btn-primary rounded-0">Contatti</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="owl-carousel owl-1 ">
+      <div class="ftco-cover-1" style="background-image: url('images/Casa_Caccamo/Casa_Caccamo 2.jpg');"></div>
+      <div class="ftco-cover-1" style="background-image: url('images/Casa_Caccamo/Casa_Caccamo 3.jpg');"></div>
+      <div class="ftco-cover-1" style="background-image: url('images/Casa_Caccamo/Casa_Caccamo_Esterno.jpg');"></div>
+    </div>
+  </div>
+  <!-- SECTION WELCOME TO MY SITE-->
+  <div class="site-section">
+    <div class="container">
+      <div class="row align-items-stretch">
+        <div class="col-lg-4">
+          <div class="h-100 bg-white box-29291">
+            <h2 class="heading-39291">La mia attività</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo mollitia id ea ab in! Nam eligendi distinctio, vitae.</p>
+            <p class="mt-5">
+              <span class="d-block font-weight-bold text-black">Damiano Civiletto</span>
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="owl-carousel owl-3">
+            <img src="images/STUDIO.jpg" alt="Image" class="img-fluid">
+            <img src="images/casa_s_palermo2.jpg" alt="Image" class="img-fluid">
+            <img src="images/piazza_montemaggiore.jpg" alt="Image" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- SECTION WHAT WE DO VIGNETTES -->
+  <div class="site-section">
+    <div class="container">
+      <div class="row mb-5 align-items-center">
+        <div class="col-md-7">
+          <h2 class="heading-39291 mb-0">Servizi</h2>
+        </div>
+        <div class="col-md-5 text-right">
+          <p class="mb-0"><a href="services" class="more-39291">Vedi tutti i servizi</a></p>
+        </div>
+      </div>
+      <div class="row">
+        {% for service in services %}
+          <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-29193 text-center">
+               <span class="img-wrap mb-5">
+               <img src="img/services_images/{{ service.file_name }}" alt="Image" class="img-fluid">
+               </span>
+              <h3 class="mb-4"><a href="service-{{ service.id }}">{{ service.title }}</a></h3>
+              <p>{{ service.content }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <!-- SECTION PROJECTS WITH VIEW ALL LINK-->
+  <div class="site-section">
+    <div class="container">
+      <div class="row mb-5 align-items-center">
+        <div class="col-md-7">
+          <h2 class="heading-39291 mb-0">I miei progetti</h2>
+        </div>
+        <div class="col-md-5 text-right">
+          <p class="mb-0"><a href="projects" class="more-39291">Vedi tutti i progetti</a></p>
+        </div>
+      </div>
+      <div class="row">
+        {% for project in projects %}
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="">
+            <div class="media-02819">
+              <a href="showSingleProject-{{ project.id }}" class="img-link small" style="text-align: center"><img src="img/projects_images/{{ project.file_name }}" alt="Image" class="img-md-fluid" style="max-height: 100%; max-width: 100%; text-align: center"></a>
+              <h3 style="text-align: center" ><a href="showSingleProject-{{ project.id }}">{{ project.title }}</a></h3>
+              <h6   style="text-align: center" >{{ project.city }}</h6>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <!--SECTION BLOG AND LATEST NEWS -->
+  <div class="site-section">
+    <div class="container">
+      <div class="row mb-5 align-items-center">
+        <div class="col-md-7">
+          <h2 class="heading-39291">Blog e aggiornamenti</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto quos veniam magni totam, architecto earum dolor id obcaecati!</p>
+        </div>
+        <div class="col-md-5 text-right">
+          <p class="mb-0"><a href="blog" class="more-39291">Vedi tutti i post</a></p>
+        </div>
+      </div>
+      <div class="col-md-5 text-right">
+      </div>
+      <div class="row align-items-stretch">
+        {% for data in post %}
+          <div class="col-lg-3 col-md-6 mb-5">
+            <div class="post-entry-1 h-100">
+              <div class="post-entry-1-contents">
+                <span class="meta">{{ data.creation_date_it }}</span>
+                <h2><a href="post-{{ data.id }}">{{ data.title }}</a></h2>
+                <p class="my-3"><a href="post-{{ data.id }}" class="more-39291">Scopri di più</a></p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

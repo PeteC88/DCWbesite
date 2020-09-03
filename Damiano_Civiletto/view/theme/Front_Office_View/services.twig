@@ -1,0 +1,30 @@
+{% extends "front_layout.twig" %}
+{% block head %}
+	<title>Services</title>
+{% endblock %}
+
+{% block content %}
+    <div class="site-section">
+      <div class="container" style="text-align: center">
+        <div class="row mb-5">
+          <div class="col-md-12">
+            <h2 class="heading-39291 mb-0" style="font-size: 3em">Servizi</h2>
+          </div>
+        </div>
+        <div class="row">
+        {% for service in services %}
+          <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up" data-aos-delay="">
+            <div class="service-29193 text-center">
+              <span class="img-wrap mb-5">
+                <img src="img/services_images/{{ service.file_name }}"  alt="Image" class="img-fluid">
+              </span>
+              <h3 class="mb-4"><a href="#">{{ service.title }}</a></h3>
+              <p>{{ service.content }}</p>
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+{% endblock %}
+     

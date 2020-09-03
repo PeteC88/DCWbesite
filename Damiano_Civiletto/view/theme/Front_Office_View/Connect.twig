@@ -1,0 +1,50 @@
+{% extends "front_layout.twig" %}
+{% block head %}
+<title>Connessione spazio Admin</title>
+{% endblock %}
+{% block content %}
+
+<div align="center">
+    <div class="ftco-blocks-cover-1">
+        <div class="ftco-cover-1" style="background-image: url('images/hero_1.jpg');">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-lg-12 text-center">
+                        <div class="box-92819">
+                            <h1 class="text-uppercase text-black mb-3">Connessione allo spazio Admin</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div>
+
+    <div><br><br><br>
+    <form class="form-inline" style="display: flex; justify-content: center;"  method="POST" action="userConnect">
+
+        <label class="sr-only" for="inlineFormInputGroup">E-mail</label>
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <input type="email" name="email" class="form-control" id="inlineFormInputGroup" placeholder="E-mail">
+            </div>
+
+         <label class="sr-only" for="inlineFormInput">Password</label>
+        <input type="password" name="password" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Password">
+        <br />
+        <br />
+        <input style="border: solid grey" type="submit" name="submit" class="btn" value="Connessione"/>
+    </form>
+    <br /><br />
+
+    {% if error is defined %}
+
+        <div style="color: red; background-color: #F6CECE; width: 300px; border-radius: 10px">  {{error}} </div>
+
+    {% endif %}
+
+        <br><br>
+        <p><a href="recoveryPasswordForm">Password dimenticata?</a></p>
+
+</div>
+</div>
+{% endblock %}
