@@ -1,0 +1,8 @@
+{
+    "php": {
+        "version": "7.3"
+    },
+    "twig/twig": {
+        "version": "v2.12.5"
+    }
+}
