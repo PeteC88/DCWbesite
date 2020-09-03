@@ -1,0 +1,30 @@
+{% extends "back_layout.twig" %}
+{% block head %}
+    <title>Modifica il post</title>
+{% endblock %}
+{% block content %}
+    <div>
+        <h1 align="center" ">Usa il formulario qui sotto per aggiungere un nuovo post</h1>
+    </div>
+    <br>
+    <div align="center">
+        <form method="post" action="adminEditPost" enctype="multipart/form-data">
+            <input type="hidden" size='3' name="id" value="{{ post.id }}" />
+            <br>
+            <p>Titolo</p>
+            <textarea class="mb-4" name="title" style="width: 80%">{{ post.title }}</textarea>
+            <br>
+            <p>Contenuto del post</p>
+            <textarea name="content"  class="editor" id="content" rows="50" cols="12" style="width: 80%">{% autoescape %}{{ post.content | raw }}{% endautoescape %}</textarea>
+            <br><br>
+    </div>
+    <div class="col text-center">
+        <br>
+        <div style="display: flex; justify-content: space-between; margin-left: 20%; margin-right: 20%">
+            <input  class="btn-md" type="submit" name="modify" value="Modifica" onclick="return confirm('Vuoi veramente modificare questo post?')" />
+            <a style="text-decoration: none" href="deletePost-{{ post.id }}" onclick="return confirm('Vuoi veramente eliminare questo post?')">
+                <input type="button" class="btn-md" value="Elimina" /></a>
+        </div>
+        </form>
+    </div>
+{% endblock %}

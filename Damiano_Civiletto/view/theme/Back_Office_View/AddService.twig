@@ -1,0 +1,23 @@
+{% extends "back_layout.twig" %}
+{% block head %}
+    <title>Aggiungi un servizio</title>
+{% endblock %}
+
+{% block content %}
+    <div><h1 align="center" ">Usa il formulario qui sotto per aggiungere un nuovo servizio</h1></div>
+    <br>
+    <div align="center">
+    <form action="addService" enctype="multipart/form-data" method="POST">
+        <label for="image" style="margin-left: 10%">Scegli un'immagine</label>
+        <input type="file" name="image" accept="image/*" id="image">
+        <br> <br>
+        <label for="title">Titolo</label><br>
+        <input type="text" name="title" id="title"><br><br>
+        <label for="content">Descrizione</label><br>
+        <textarea name="content" id="content" cols="50"></textarea><br><br>
+        <input type="submit" name="submit" value="Aggiungi Servizio">
+    </form>
+    </div>
+
+{% endblock %}
+

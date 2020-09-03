@@ -1,0 +1,41 @@
+{% extends "back_layout.twig" %}
+{% block head %}
+    <title>Admin Progetti</title>
+{% endblock %}
+{% block content %}
+    <div class="ftco-blocks-cover-1">
+        <div class="ftco-cover-1" style="background-image: url('images/progetto_casa_caccamo.jpg');">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-lg-12 text-center">
+                        <div class="box-92819">
+                            <h1 class="text-uppercase text-black mb-3">Progetti</h1>
+                            <p class="mb-0">Sfoglia la selezione dei progetti</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+                {% for project in projects %}
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="">
+                    <form method="post" action="editProjectShowForm-{{ project.id }}">
+                        <div class="media-02819">
+                            <a href="editProjectShowForm-{{ project.id }}" class="img-link small" style="text-align: center"><img src="img/projects_images/{{ project.file_name }}" alt="Image" class="img-fluid" style="max-height: 100%; max-width: 100%; text-align: center"></a>
+                            <h3 style="text-align: center" ><a href="editProjectShowForm-{{ project.id }}">{{ project.title }}</a></h3>
+                            <h6 style="text-align: center" >{{ project.city }}</h6>
+                            <input type="hidden" size='3' name="id" value="{{ project.id }}" />
+                            <br>
+                            <input class="btn-sm" type="submit" name="modify" value="Modifica o elimina" />
+                        </div>
+                </div>
+                </form>
+                {% endfor %}
+            </div>
+            <a href="adminAddProjectShowForm">Aggiungi un nuovo progetto</a>
+        </div>
+    </div>
+{% endblock %}

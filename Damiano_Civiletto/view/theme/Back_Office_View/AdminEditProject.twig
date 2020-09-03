@@ -1,0 +1,44 @@
+{% extends "back_layout.twig" %}
+{% block head %}
+    <title>Modifica il progetto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% endblock %}
+{% block content %}
+    <div>
+        <h1 align="center" ">Usa il formulario qui sotto per aggiungere un nuovo progetto</h1>
+    </div>
+    <br>
+    <div align="center">
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="">
+            <div class="media-02819">
+                <form method="post" action="editProjectThumbnail" enctype="multipart/form-data">
+                    <div class="link-img small"><img src="img/projects_images/{{ project.file_name }}" name="thumbnail" alt="Image" id="image" class="card-img"></div>
+                    <br><br>
+                    <input type="hidden" size='3' name="id" value="{{ project.id }}" />
+                    <label for="thumbnail" class="btn btn-default btn-file">Cambia Immagine</label><br>
+                    <input style="color: transparent; width: 90px; margin-left: 40%; margin-right: 40%" type="file" name="thumbnail" accept="image/*" id="image" onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])">
+                    <input  class="btn-sm" type="submit" name="modify" value="Modifica l'immagine" onclick="return confirm('Vuoi veramente modificare questa immagine?')" />
+                </form>
+            </div>
+        </div>
+        <form method="post" action="editProjectAction" enctype="multipart/form-data">
+            <input type="hidden" size='3' name="id" value="{{ project.id }}" />
+            <br>
+            <p>Titolo</p>
+            <textarea class="mb-4" name="title" style="width: 80%">{{ project.title }}</textarea>
+            <br>
+            <p>Città</p>
+            <textarea class="mb-4" name="city"style="width: 80%">{{ project.city }}</textarea>
+            <textarea name="content"  class="editor" id="content" rows="50" cols="12" style="width: 80%">{% autoescape %}{{ project.content | raw }}{% endautoescape %}</textarea>
+            <br><br>
+    </div>
+    <div class="col text-center">
+        <br>
+        <div style="display: flex; justify-content: space-between; margin-left: 20%; margin-right: 20%">
+            <input  class="btn-md" type="submit" name="modify" value="Modifica" onclick="return confirm('Vuoi veramente modificare questo elemento?')" />
+            <a style="text-decoration: none" href="deleteProject-{{ project.id }}" onclick="return confirm('Vuoi veramente eliminare questo elemento?')">
+                <input type="button" class="btn-md" value="Elimina" /></a>
+        </div>
+        </form>
+    </div>
+{% endblock %}

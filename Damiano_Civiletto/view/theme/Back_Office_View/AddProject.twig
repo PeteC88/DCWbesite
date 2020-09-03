@@ -1,0 +1,24 @@
+{% extends "back_layout.twig" %}
+{% block head %}
+    <title>Aggiungi un progetto</title>
+{% endblock %}
+
+{% block content %}
+    <div><h1 align="center" ">Usa il formulario qui sotto per aggiungere un nuovo progetto</h1></div>
+    <br>
+    <div align="center">
+        <form action="adminAddProject" enctype="multipart/form-data" method="POST">
+            <label for="image" style="margin-left: 10%">Scegli un'immagine di copertina</label>
+            <input type="file" name="image" accept="image/*" id="image">
+            <br> <br>
+            <label for="title">Titolo</label><br>
+            <input type="text" name="title" id="title"><br><br>
+            <label for="city">Città</label><br>
+            <input type="text" name="city" id="city"><br><br>
+            <label for="content">Descrizione</label><br>
+            <textarea name="content"  class="editor" id="content" rows="50" cols="2" style="width: 80%"></textarea><br><br>
+            <input type="submit" name="submit" value="Aggiungi il progetto">
+        </form>
+    </div>
+
+{% endblock %}
