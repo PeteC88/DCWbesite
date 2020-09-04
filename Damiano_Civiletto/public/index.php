@@ -67,7 +67,7 @@ if(isset($_GET['route']))
             case 'addComment':
                 if (isset($_GET['id']) && $_GET['id'] > 0) {
                     $CommentController = new CommentController();
-                    $CommentController->addComment($_GET['id'], $_POST['author'], $_POST['comment'], $_POST['email']);
+                    $CommentController->addComment($_GET['id'], $_POST['postTitle'], $_POST['author'], $_POST['comment'], $_POST['email']);
                 } else {
                     throw new Exception('Non esiste un post con questo id');
                 }
@@ -120,7 +120,7 @@ if(isset($_GET['route']))
 
             case 'adminEditPost':
                 $AdminPostController = new AdminPostController();
-                $AdminPostController->editPostAction($_GET['id'], $_POST['id'], $_POST['title'], $_POST['content']);
+                $AdminPostController->editPostAction($_POST['id'], $_POST['id'], $_POST['title'], $_POST['content']);
                 break;
 
             case 'deletePost':
