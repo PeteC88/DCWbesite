@@ -32,7 +32,7 @@ Class AdminPostController extends \App\Core\AdminBasecontroller
 	public function listAll(int $currentPage = 1)
 	{
         //Determinate how many items are in a page
-        $perPage = 2;
+        $perPage = 4;
 
 
         //calculate the first post in a page
