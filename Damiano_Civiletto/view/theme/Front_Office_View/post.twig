@@ -52,7 +52,7 @@
                   <div>
                     <h3 class="mb-5">Lascia un commento</h3>
                     <form id="submit_form" method="POST" action="addComment-{{ post.id }}"  class="">
-                     <!-- <input id="postId" name="postId" type="hidden" value="{{ post.id }}"> -->
+                     <input id="postId" name="postTitle" type="hidden" value="{{ post.title }}">
                       <div class="form-group">
                         <label for="author">Nome *</label>
                         <input type="text" name="author" class="form-control" id="author">
