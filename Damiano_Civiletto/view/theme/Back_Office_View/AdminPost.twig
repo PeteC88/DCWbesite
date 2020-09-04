@@ -1,0 +1,66 @@
+{% extends "back_layout.twig" %}
+{% block head %}
+  <title>Blog</title>
+{% endblock %}
+{% block content %}
+  <div class="ftco-blocks-cover-1">
+    <div class="ftco-cover-1 overlay" style="background-image: url('images/blog.jpg')">
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-lg-6 text-center">
+               <span class="d-block mb-3 text-white" data-aos="fade-up">{{ post.creation_date_it }}
+               <h1 class="mb-4" data-aos="fade-up" data-aos-delay="100">{{ post.title }}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="site-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7 mr-auto blog-content">
+          <p class="lead">{{ post.content | raw }}</p>
+          <div class="pt-5">
+            <h3 class="mb-5">{{ countAllComments}} Commenti, di cui  {{count_comments | default("0")}} non ancora approvati </h3>
+            <ul class="comment-list" style="margin-left: -10%">
+              {% for comment in comments %}
+              <li class="comment">
+                <div class="comment-body">
+                  {% if comment.authorised_comment == 1 %}
+                    <h3 class="">{{ comment.author }}</h3>
+                      <p>{{ comment.email }}</p>
+                    <div class="meta" style="color: #0f6674">{{ comment.comment_date_it }}</div>
+                    <p>{{ comment.comment | raw }}</p>
+                      <form action="adminRemoveComment-{{ comment.id }}" method="post">
+                          <input type="hidden" name="postId" value="{{ post.id }}" />
+                          <br>
+                          <input type="submit" onclick="return confirm('Vuoi veramente eliminare questo commento?')" value="Elimina">
+                      </form>
+                  {% endif %}
+                  {% if comment.authorised_comment == 0 %}
+                    <h3 class="" style="color: red">{{ comment.author }}</h3>
+                      <p>Indirizzo email : {{ comment.email }}</p>
+                    <div class="meta" style="color: #0f6674">{{ comment.comment_date_it }}</div>
+                    <p style="color: red">{{ comment.comment | raw }}</p>
+                    <form action="approveComment" method="post" style="display: inline">
+                      <input type="hidden" name="commentId" value="{{ comment.id }}" />
+                      <input type="hidden" name="postId" value="{{ post.id }}" />
+                      <input class="btn btn-primary" type="submit" name="approvePost" onclick="return confirm('Vuoi veramente approvare questo commento?')" value="Approva">
+                    </form>
+                    <form action="adminRemoveComment-{{ comment.id }}" method="post" style="display: inline">
+                      <input type="hidden" name="postId" value="{{ post.id }}" />
+                      <input class="btn btn-primary" type="submit" name="RemoveComment" onclick="return confirm('Vuoi veramente eliminare questo commento?')" value="Elimina">
+                    </form>
+                  {% endif %}
+                  {% endfor %}
+                </div>
+              </li>
+            </ul>
+            <!-- END comment-list -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+{% endblock %}
