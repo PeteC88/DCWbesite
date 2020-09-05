@@ -27,7 +27,7 @@ class CommentController extends \App\Core\Basecontroller
     {
         //to encode the json
         header( 'Content-Type: application/json' );
-        if (empty( $author ) || empty( $comment ) || empty( $email )) {
+        if (empty($author ) || empty( $comment ) || empty( $email )) {
             $data = array('reponse' => 'error', 'content' => "Per poter inviare il messaggio bisogna riempire tutti i campi");
         } else {
             $affectedLines = $this->CommentModel->postComment( $postId, $author, $comment, $email );
@@ -47,7 +47,7 @@ class CommentController extends \App\Core\Basecontroller
                 $message = (new \Swift_Message( 'Hai ricevuto un nuovo commento al tuo post "' . $postTitle . '"' ))
                     ->setFrom( [$email => $author] )
                     ->setTo( ['pietrociccarello@gmail.com' => 'A Damiano'] )
-                    ->setBody( 'Hai ricevuto un nuovo commento al tuo post dal titolo "'. $postTitle. '" <br><br>Ecco il commento:<br> '.$comment . ' <br><br>Indirizzo mail dell\'autore del commento: ' . $email. '<br><br>Puoi accedere alla pagina del commento, per decidere se approvarlo o meno, direttamente dal tuo spazio admin tramite questo <a href="http://localhost:8888/Damiano_Civiletto/adminPost-'. $postId. '">link</a>', 'text/html' );
+                    ->setBody( 'Hai ricevuto un nuovo commento al tuo post dal titolo "'. $postTitle. '" <br><br>Ecco il commento:<br><br>" '.$comment . '" <br><br>Indirizzo e-mail dell\'autore del commento: ' . $email. '<br><br>Puoi accedere alla pagina del commento, per decidere se approvarlo o meno, direttamente dal tuo spazio admin tramite questo <a href="http://localhost:8888/Damiano_Civiletto/adminPost-'. $postId. '">link</a>', 'text/html' );
 
                 // Send the message
                 $result = $mailer->send( $message );
@@ -56,8 +56,8 @@ class CommentController extends \App\Core\Basecontroller
                     $data = array('reponse' => 'success', 'content' => "Il messaggio è stato inviato correttamente ma sarà visibile soltanto dopo essere stato approvato");
                 }
             }
-            echo json_encode( $data );
         }
+        echo json_encode( $data );
     }
 
 }
