@@ -30,7 +30,7 @@ Class ProjectModel extends \App\DbConnect\Model
      */
     public function getProject(int $id)
     {
-        $req = $this->pdo->prepare('SELECT id, title, content, file_name, city, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin\') AS creation_date_it, DATE_FORMAT(editing_date, \'%d/%m/%Y à %Hh%imin\') AS editing_date_it FROM project WHERE id = :id');
+        $req = $this->pdo->prepare('SELECT id, title, content, file_name, city, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin\') AS creation_date_it, DATE_FORMAT(editing_date, \'%d/%m/%Y à %H:%i\') AS editing_date_it FROM project WHERE id = :id');
 
         $req->bindValue(':id', (int) $id);
         $req->execute();
