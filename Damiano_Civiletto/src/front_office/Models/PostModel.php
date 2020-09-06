@@ -58,7 +58,7 @@ Class PostModel extends \App\DbConnect\Model
   	*/
 	public function getPostComments(int $postId):array
     {
-        $comments = $this->pdo->prepare('SELECT id, author, comment, post_id, reported_comment, authorised_comment, DATE_FORMAT(comment_date, \'%d/%m/%Y alle %Hh%imin\') AS comment_date_it FROM comments WHERE post_id = :postId ORDER BY comment_date DESC');
+        $comments = $this->pdo->prepare('SELECT id, author, comment, email, post_id, reported_comment, authorised_comment, DATE_FORMAT(comment_date, \'%d/%m/%Y alle %H:%i\') AS comment_date_it FROM comments WHERE post_id = :postId ORDER BY comment_date DESC');
 
 
         $comments->bindValue(':postId', (int) $postId);
@@ -107,7 +107,7 @@ Class PostModel extends \App\DbConnect\Model
      */
    public function getPost(int $id)
     {
-        $req = $this->pdo->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y alle %Hh%imin\') AS creation_date_it, DATE_FORMAT(editing_date, \'%d/%m/%Y à %Hh%imin\') AS editing_date_fr FROM posts WHERE id = :id');
+        $req = $this->pdo->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y alle %H:%i\') AS creation_date_it, DATE_FORMAT(editing_date, \'%d/%m/%Y à %H:%i\') AS editing_date_fr FROM posts WHERE id = :id');
 
         $req->bindValue(':id', (int) $id);
         $req->execute();
