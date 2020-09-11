@@ -2,7 +2,7 @@
 namespace App\back_office\Controllers;
 use App\front_office\Models\ProjectModel;
 
-Class AdminProjectsController extends \App\Core\AdminBasecontroller
+Class AdminProjectsController extends \App\Core\AdminBaseController
 {
     protected $ProjectModel;
 
@@ -79,11 +79,11 @@ Class AdminProjectsController extends \App\Core\AdminBasecontroller
 
                 if (file_exists($image_path))
                 {
-                    echo 'L\'immagine esiste nel database, cambia immagine o cambia nome all\'immagine.';
+                    throw new \Exception('L\'immagine esiste nel database, cambia immagine o cambia nome all\'immagine.');
                 }
                 else if ($_FILES['image']['size'] > 1000000)
                 {
-                    echo 'Scegli un\'immagine minore di 1Mb.';
+                    throw new \Exception( 'Scegli un\'immagine minore di 1Mb.');
                 }
                 else
                 {
@@ -94,7 +94,7 @@ Class AdminProjectsController extends \App\Core\AdminBasecontroller
 
                     if ($affectedLines === false)
                     {
-                        throw new Exception('Impossible aggiungere l\'immagine');
+                        throw new \Exception('Impossible aggiungere l\'immagine');
                     }
                     else
                     {
@@ -122,7 +122,7 @@ Class AdminProjectsController extends \App\Core\AdminBasecontroller
         }
         else
         {
-            echo 'Questo progetto non esiste';
+            throw new \Exception('Questo progetto non esiste.');
         }
 
     }
@@ -183,7 +183,7 @@ Class AdminProjectsController extends \App\Core\AdminBasecontroller
 
         if ($affectedLines === false)
         {
-            var_dump($content);//throw new \InvalidArgumentException ('Impossibile modificare questo progetto');
+            throw new \Exception ('Impossibile modificare questo progetto');
         }
         else
         {
@@ -209,7 +209,7 @@ Class AdminProjectsController extends \App\Core\AdminBasecontroller
 
         if ($affectedLines === false)
         {
-            throw new \InvalidArgumentException('Impossibile cancellare il progetto');
+            throw new \Exception('Impossibile cancellare il progetto');
         }
         else
         {
