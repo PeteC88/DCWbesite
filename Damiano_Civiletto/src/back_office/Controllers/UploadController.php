@@ -9,7 +9,7 @@ class UploadController
     function imageUpload()
     {
     // Allowed origins to upload images
-    $accepted_origins = array("http://localhost");
+    $accepted_origins = array("http://damianociviletto.com" );
 
     // Images upload path
     $imageFolder = "upload/";
@@ -24,7 +24,7 @@ class UploadController
         }
 
         // Verify extension
-        if (!in_array(strtolower(pathinfo($temp['name'], PATHINFO_EXTENSION)), array("gif", "jpg", "png"))) {
+        if (!in_array(strtolower(pathinfo($temp['name'], PATHINFO_EXTENSION)), array("gif", "jpg", "png", "svg"))) {
             header("HTTP/1.1 400 Invalid extension.");
             return;
         }
