@@ -17,7 +17,7 @@ tinymce.init({
     plugins: 'autoresize print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
     imagetools_cors_hosts: ['picsum.photos'],
     menubar: 'file edit view insert format tools table help',
-    toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+    toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
     toolbar_sticky: true,
     autosave_ask_before_unload: true,
     autosave_interval: '30s',
@@ -30,7 +30,7 @@ tinymce.init({
 
 
     // without images_upload_url set, Upload tab won't show up
-    images_upload_url: 'http://localhost:8888/Damiano_Civiletto/public/index.php?route=upload',
+    images_upload_url: 'http://damianociviletto.com/public/index.php?route=upload',
 
     // override default upload handler to simulate successful upload
     images_upload_handler: function (blobInfo, success, failure) {
@@ -38,7 +38,7 @@ tinymce.init({
 
         xhr = new XMLHttpRequest();
         xhr.withCredentials = false;
-        xhr.open('POST', 'http://localhost:8888/Damiano_Civiletto/public/index.php?route=upload', true);
+        xhr.open('POST', 'http://damianociviletto.com/public/index.php?route=upload', true);
 
         xhr.onload = function() {
             var json;
