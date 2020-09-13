@@ -99,11 +99,8 @@ if(isset($_GET['route']))
                 break;
 
             case 'adminAddPost':
-                if (!empty($_POST['title']) && !empty($_POST['content']))
-                {
                     $AdminPostController = new AdminPostController();
                     $AdminPostController->addPostAction(htmlspecialchars($_POST['title']), $_POST['content']);
-                }
                 break;
 
             case 'editPostShowForm':
