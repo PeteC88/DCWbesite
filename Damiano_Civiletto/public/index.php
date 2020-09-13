@@ -208,7 +208,7 @@ if(isset($_GET['route']))
                 else
                 {
                     $AdminUserController = new AdminUserController();
-                    $AdminUserController->changePasswordAction($_SESSION['user']['email'], $_POST['password'], $_POST['new_pass'], $_POST['re_pass']);
+                    $AdminUserController->changePasswordAction($_POST['email'], $_POST['password'], $_POST['new_pass'], $_POST['re_pass']);
                 }
                 break;
 
