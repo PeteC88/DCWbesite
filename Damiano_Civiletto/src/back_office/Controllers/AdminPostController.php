@@ -6,7 +6,7 @@ use App\front_office\Models\PostModel;
 /**
  * The class manage all the actions concerned the post in admin section
  */
-Class AdminPostController extends \App\Core\AdminBasecontroller
+Class AdminPostController extends \App\Core\AdminBaseController
 {
     /**
      * @var PostModel
@@ -92,7 +92,7 @@ Class AdminPostController extends \App\Core\AdminBasecontroller
 	 */
 	public function addPostAction(string $title, string $content)
 		{
-            if(!empty($title) && !empty($content))
+            if(isset($title) && isset($content))
             {
                 $affectedLines = $this->PostModel->addPost($title, $content);
 
@@ -106,7 +106,7 @@ Class AdminPostController extends \App\Core\AdminBasecontroller
             }
             else
             {
-                throw new Exception('Impossibile aggiungere il post, torna indietro e prova a riempire tutti i campi');
+                throw new \Exception('Impossibile aggiungere il post, torna indietro e prova a riempire tutti i campi');
             }
 		}
 
