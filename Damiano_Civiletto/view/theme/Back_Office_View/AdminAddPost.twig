@@ -1,20 +1,17 @@
 {% extends "back_layout.twig" %}
 {% block head %}
     <title>Aggiungi un nuovo post</title>
-    <script src="js/validation_blog_form.js"></script>
 {% endblock %}
 
 {% block content %}
     <div><h1 align="center" ">Usa il formulario qui sotto per aggiungere un nuovo post</h1></div>
     <br>
     <div align="center">
-        <form action="adminAddPost" method="POST" onsubmit="return validate()">
+        <form action="adminAddPost" method="POST" onsubmit="return validate()" id="submit_blog_form">
             <label for="title">Titolo</label><br>
-            <span id="error_title"></span>
-            <textarea id="title" name="title" style="width: 80%" type="text"></textarea><br><br>
+            <textarea id="title" name="title" style="width: 80%" type="text" placeholder="Inserisci un titolo" required></textarea><br><br>
             <label for="content">Contenuto del post</label><br>
-            <span id="error_content"></span>
-            <textarea name="content"  class="editor" id="content" rows="50" cols="2" style="width: 80%"></textarea><br><br>
+            <textarea name="content"  class="editor" id="content" rows="50" cols="2" style="width: 80%" placeholder="Inserisci un testo"></textarea><br><br>
             <input type="submit" name="submit" value="Aggiungi il post">
         </form>
     </div>

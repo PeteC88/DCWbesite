@@ -15,11 +15,11 @@
                 </div>
                   <form action="../public/index.php?action=addService" method="post" enctype="multipart/form-data">
                     <label for="image">Aggiungi un nuovo servizio</label>
-                    <input type="file" name="image" accept="image/*" id="image">
+                    <input type="file" name="image" accept="image/*" id="image" required>
                     <label for="title">Titolo</label>
-                    <input type="text" name="title" id="title">
+                    <input type="text" name="title" id="title" required>
                     <label for="content">Descrizione</label>
-                    <textarea name="content" id="content"></textarea>
+                    <textarea name="content" id="content" required></textarea>
                       <input type="submit" value="Aggiungi Servizio" name="submit">
                   </form> 
                 </div>

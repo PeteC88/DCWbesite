@@ -9,10 +9,10 @@
     <div align="center">
     <form action="addService" enctype="multipart/form-data" method="POST">
         <label for="image" style="margin-left: 10%">Scegli un'immagine</label>
-        <input type="file" name="image" accept="image/*" id="image">
+        <input type="file" name="image" accept="image/*" id="image" required>
         <br> <br>
         <label for="title">Titolo</label><br>
-        <input type="text" name="title" id="title"><br><br>
+        <input type="text" name="title" id="title" required><br><br>
         <label for="content">Descrizione</label><br>
         <textarea name="content" id="content" cols="50"></textarea><br><br>
         <input type="submit" name="submit" value="Aggiungi Servizio">
